@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:thymeleaf="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.thymeleaf.org http://www.thymeleaf.org/spring5/thymeleaf-spring5.xsd">
+
+    <!-- Configuración del TemplateResolver de Thymeleaf -->
+    <beans:bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+        <beans:property name="prefix" value="/WEB-INF/vistas/" />
+        <beans:property name="suffix" value=".html" />
+        <beans:property name="templateMode" value="HTML" />
+    </beans:bean>
+
+    <!-- Configuración del TemplateEngine de Thymeleaf -->
+    <beans:bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <beans:property name="templateResolver" ref="templateResolver" />
+        <!-- Habilitar Thymeleaf como el motor de plantillas de vistas -->
+        <beans:property name="dialects">
+            <beans:set>
+                <beans:bean class="org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect" />
+            </beans:set>
+        </beans:property>
+    </beans:bean>
+
+    <!-- Escanea el Classpath en búsqueda de anotaciones como @Component, @Repository, @Service, @Controller, etc. -->
+    <context:component-scan base-package="model.controller" />
+
+</beans:beans>
