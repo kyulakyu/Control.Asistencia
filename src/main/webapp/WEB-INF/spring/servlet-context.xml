@@ -19,12 +19,12 @@
                        Por ejemplo: <link rel="stylesheet" href="/res/css/estilo.css">
             - location: Dónde se encuentran los recursos de la aplicación
     -->
-    <resources mapping="/res/**" location="/recursos/" />
+    <resources mapping="/res/**" location="/resources/" />
 
     <!-- Resuelve las vistas seleccionadas por @Controllers -->
     <beans:bean id="viewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <beans:property name="prefix" value="/WEB-INF/vistas/" />
+        <beans:property name="prefix" value="/WEB-INF/views/" />
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
 

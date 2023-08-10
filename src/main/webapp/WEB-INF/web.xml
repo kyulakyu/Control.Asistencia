@@ -7,7 +7,11 @@
     <!-- Definición del contenedor raíz de Spring, compartido por todos los Servlets y Filtros -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/root-context.xml</param-value>
+        <param-value>
+            /WEB-INF/spring/root-context.xml
+            /WEB-INF/spring/spring-security.xml
+            /WEB-INF/spring/thymeleaf-config.xml
+        </param-value>
     </context-param>
 
     <!-- Crea el contenedor Spring compartido por todos los Servlets y Filtros -->
@@ -23,7 +27,7 @@
         <!-- Parámetros iniciales -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring/appServlet-context.xml</param-value>
+            <param-value>/WEB-INF/spring/servlet-context.xml</param-value>
         </init-param>
 
         <!-- Cargar al iniciar la aplicación -->

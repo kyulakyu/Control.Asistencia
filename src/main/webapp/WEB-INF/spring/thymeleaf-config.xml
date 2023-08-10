@@ -12,7 +12,7 @@
 
     <!-- Configuración del TemplateResolver de Thymeleaf -->
     <beans:bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
-        <beans:property name="prefix" value="/WEB-INF/vistas/" />
+        <beans:property name="prefix" value="/WEB-INF/views/" />
         <beans:property name="suffix" value=".html" />
         <beans:property name="templateMode" value="HTML" />
     </beans:bean>
