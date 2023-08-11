@@ -9,32 +9,32 @@
                                  http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<!-- Configuración de seguridad -->
-	<http auto-config="true">
-		<intercept-url pattern="/CrearCapacitacion"
-			access="hasAnyAuthority('ROLE_cliente')" />
-		<intercept-url pattern="/ListarCapacitaciones"
-			access="hasAnyAuthority('ROLE_cliente')" />
-		<intercept-url pattern="/ListarUsuarios"
+<!-- 	<http auto-config="true">
+		<intercept-url pattern="/crearUsuario"
 			access="hasAnyAuthority('ROLE_administrativo')" />
-		<intercept-url pattern="/CrearUsuario"
+		<intercept-url pattern="/listarUsuario"
 			access="hasAnyAuthority('ROLE_administrativo')" />
-		<intercept-url pattern="/CrearPago"
+		<intercept-url pattern="/listarAsistencia"
 			access="hasAnyAuthority('ROLE_administrativo')" />
-		<intercept-url pattern="/ListarPagos"
+		<intercept-url pattern="/listarReportes"
 			access="hasAnyAuthority('ROLE_administrativo')" />
-		<intercept-url pattern="/logout" access="permitAll" /> <!-- Permitir acceso a todos -->
+		<intercept-url pattern="/cuenta"
+			access="hasAnyAuthority('ROLE_usuario')" />
+		<intercept-url pattern="/marcarAsistencia"
+			access="hasAnyAuthority('ROLE_usuario')" />
+		<intercept-url pattern="/reportarIncidente"
+			access="hasAnyAuthority('ROLE_usuario')" />
+		<intercept-url pattern="/contacto"
+			access="hasAnyAuthority('ROLE_usuario')" />
+		<intercept-url pattern="logout" access="permitAll" /> Permitir acceso a todos
 		<intercept-url pattern="/" access="permitAll" />
-		<intercept-url pattern="/api/capacitaciones"
-			access="hasAnyAuthority('ROLE_cliente')" />
-		<intercept-url pattern="/api/clientes"
-			access="hasAnyAuthority('ROLE_administrativo')" />
 		<form-login login-page="/login"
 			authentication-failure-url="/error" username-parameter="username"
 			password-parameter="password" />
 		<csrf disabled="true" />
 		<logout logout-success-url="/" />
 
-	</http>
+	</http> -->
 
 	<!-- Configuración de autenticación -->
 	<authentication-manager>

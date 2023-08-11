@@ -19,23 +19,20 @@
         <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 
         <!-- URL de conexión -->
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-
+        <property name="url" value="jdbc:mysql://localhost:3306/prevencion_riesgos" />
         <!-- Nombre de Usuario -->
         <property name="username" value="system" />
-
         <!-- Contraseña de Acceso -->
         <property name="password" value="root" />
     </bean>
 
     <!-- Configuración de JPA -->
-    <bean id="entityManagerFactory"
-        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <!-- Referencia la datasource previamente configurado -->
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="ds" />
 
         <!-- Especificar qué paquete contiene los modelos -->
-        <property name="packagesToScan" value="control_asistencia.control.asistencia.modelos" />
+        <property name="packagesToScan" value="model.entity" />
 
         <!-- Vendor Adapter -->
         <property name="jpaVendorAdapter">
@@ -46,7 +43,7 @@
         <property name="jpaProperties">
             <props>
                 <!-- Dialecto > https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/session-configuration.html -->
-                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 
                 <!-- Mostrar consultas SQL (depuración) -->
                 <prop key="hibernate.show_sql">true</prop>
@@ -63,12 +60,12 @@
     </bean>
 
     <!-- Habilitar la búsqueda de componentes en el proyecto -->
-    <context:component-scan base-package="control_asistencia.control.asistencia" />
+    <context:component-scan base-package="model" />
 
     <!-- Configuración del Administrador de Transacciones -->
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <!-- Configuración de los Repositorios -->
-    <jpa:repositories base-package="control_asistencia.control.asistencia.repositorios" />
+    <!-- Configuración de los Repositorios JPA-->
+    <jpa:repositories base-package="model.repository" />
 
 </beans>

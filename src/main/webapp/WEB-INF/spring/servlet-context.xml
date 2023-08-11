@@ -19,12 +19,12 @@
                        Por ejemplo: <link rel="stylesheet" href="/res/css/estilo.css">
             - location: Dónde se encuentran los recursos de la aplicación
     -->
-    <resources mapping="/res/**" location="/resources/" />
+    <resources mapping="/res/**" location="/recursos/" />
 
     <!-- Resuelve las vistas seleccionadas por @Controllers -->
     <beans:bean id="viewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <beans:property name="prefix" value="/WEB-INF/views/" />
+        <beans:property name="prefix" value="/WEB-INF/vistas/" />
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
 
@@ -33,10 +33,17 @@
         <beans:property name="templateEngine" ref="templateEngine" />
     </beans:bean>
 
-    <!-- Configuración del TemplateEngine de Thymeleaf -->
-    <beans:bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
-        <!-- Configuración del template resolver y otras opciones -->
-    </beans:bean>
+	<!-- Configuración del TemplateEngine de Thymeleaf -->
+	<beans:bean id="templateEngine"	class="org.thymeleaf.spring5.SpringTemplateEngine">
+		<!-- Configuración del template resolver y otras opciones -->
+		<beans:property name="templateResolver"	ref="templateResolver" />
+		<!-- Configuración adicional para el procesamiento de plantillas -->
+		<beans:property name="additionalDialects">
+			<beans:set>
+				<!-- Agregar dialectos adicionales si es necesario -->
+			</beans:set>
+		</beans:property>
+	</beans:bean>
 
     <!-- Escanea el Classpath en búsqueda de anotaciones como @Component, @Repository, @Service, @Controller, etc. -->
     <context:component-scan base-package="model.controller" />
