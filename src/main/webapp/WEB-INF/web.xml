@@ -33,6 +33,10 @@
         <!-- Cargar al iniciar la aplicación -->
         <load-on-startup>1</load-on-startup>
     </servlet>
+	<welcome-file-list>
+		<welcome-file>inicio.jsp</welcome-file>
+	</welcome-file-list>
+
 
     <!-- Mapping del Dispatcher -->
     <servlet-mapping>
