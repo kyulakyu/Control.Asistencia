@@ -65,7 +65,7 @@
 				<i class='bx bx-news icon'></i>
 				<span class="text nav-text">Crear Boletin</span>
 				</a></li>
-				<li class="nav-link"><a href="ListarAsistencia"> 
+				<li class="nav-link"><a href="ListarAsistencias"> 
 				<i class='bx bx-list-ul icon'></i>
 				<span class="text nav-text">Listado Asistencia</span>
 				</a></li>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import model.entity.Contacto;
 import model.service.ContactoService;
 
@@ -22,6 +23,6 @@ public class ContactoController {
     @RequestMapping(path = "/CrearContacto", method = RequestMethod.POST)
     public String crearContacto(@ModelAttribute Contacto contacto) {
         contactoService.crearContacto(contacto);
-        return "redirect:/";
-    }
+        return "redirect:/Contacto";
+    } 
 }

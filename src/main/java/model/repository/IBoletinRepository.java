@@ -9,6 +9,6 @@ import model.entity.Boletin;
 
 public interface IBoletinRepository extends JpaRepository<Boletin, Integer>{
 
-    @Query("SELECT a FROM Boletin a ORDER BY a.id DESC")
+    @Query("SELECT b FROM Boletin b ORDER BY b.id DESC")
     List<Boletin> findUltimosTresBoletines();
 }

@@ -1,4 +1,4 @@
-package model.controller;
+ package model.controller;
 
 import java.util.List;
 
@@ -15,10 +15,7 @@ import model.service.AsistenciaService;
 public class AsistenciaController {
 
     @Autowired
-    private AsistenciaService cs;
-
-    @Autowired
-    private RestUsuarioController restUsuarioController; // Inyectar el servicio RestUsuarioController
+    private AsistenciaService as;
 
     /**
      * Maneja las solicitudes que se le hacen a la raíz del sitio
@@ -33,7 +30,7 @@ public class AsistenciaController {
     @RequestMapping(path = "/ListarAsistencias", method = RequestMethod.GET)
     public ModelAndView mostrarListarAsistencias() {
         // Obtener la lista de asistencias desde el servicio AsistenciaService
-        List<Asistencia> asistencias = cs.getAsistencias();
+        List<Asistencia> asistencias = as.getAsistencias();
 
         ModelAndView modelAndView = new ModelAndView("listarAsistencias", "asistencias", asistencias);
         return modelAndView;
@@ -42,21 +39,14 @@ public class AsistenciaController {
     @RequestMapping(path = "/CrearAsistencia", method = RequestMethod.POST)
     public ModelAndView crearAsistencia(Asistencia asistencia) {
         try {
-            String detalle = asistencia.getDetalle(); // Obtenemos el detalle utilizando el método mostrarDetalle()
-            asistencia.setDetalle(detalle); // Establecemos el detalle en el objeto Asistencia
-            cs.crearAsistencias(asistencia, detalle); // Guardamos la capacitación en la base de datos (asegúrate de que el método crearAsistencias solo reciba la instancia de Asistencia)
+            String detalle = asistencia.getDetalle();
+            asistencia.setDetalle(detalle);
+            as.crearAsistencias(asistencia, detalle);
 
-            // Obtener la lista de asistencias en formato JSON desde el servicio RestUsuarioController
-            List<Asistencia> asistenciasJson = restUsuarioController.getTresAsistencias();
-
-            // Agregar la lista de asistencias JSON al modelo para que esté disponible en la vista listaAsistenciasJson.jsp
-            ModelAndView jsonModelAndView = new ModelAndView("listaAsistenciasJson");
-            jsonModelAndView.addObject("asistenciasJson", asistenciasJson);
-
-            return jsonModelAndView;
+            // Redirigir al usuario a la página "crearAsistencia" después de guardar el asistencia
+            return new ModelAndView("redirect:/CrearAsistencia");
         } catch (Exception e) {
             e.printStackTrace();
-            // Manejar el error adecuadamente, redirigir a una página de error o mostrar un mensaje de error en la vista.
             return new ModelAndView("error");
         }
     }

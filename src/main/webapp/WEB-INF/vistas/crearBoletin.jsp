@@ -12,20 +12,20 @@
 	<%@ include file='sidebar.jsp'%>
 	<div class="form-container">
 		<div class="contacto">
-					<form action="/control.asistencia/CrearAsistencia" method="post"
+					<form action="/control.asistencia/CrearBoletin" method="post"
 				onsubmit="return enviarFormulario(event)">
 				<h1 class="tituloContacto">Formulario de Boletin</h1>
 				<label for="titulo">Titulo:</label><br>
 				<input type="text" id="titulo" name="titulo" title="Campo Obligatorio"><br>
 				<span id="tituloValidationMessage" style="color: red;"></span> <br>
-				<label for="fechaBoletin">Ingrese el Día de la Asistencia:</label><br>
+				<label for="fechaBoletin">Ingrese el Día:</label><br>
 				<input type="text" id="fechaBoletin" name="fechaBoletin" title="Formato DD/MM/AAAA"><br>
 				<span id="fechaBoletinValidationMessage" style="color: red;"></span><br> 
 				<label for="detalle">Ingrese el detalle:</label><br> 
 				<input type="text" id="detalle" name="detalle" title="Campo Obligatorio / Max 70 Caracteres."><br>
-				<span id="detalleValidationMessage" style="color: red;"></span> <br>
+				<span id="detalleValidationMessage" style="color: red;"></span><br>
 				<br>
-				<div class="contenedor-boton">
+				<div style="display: flex; justify-content: center;" class="mb-5">
 					<input type="submit" value="Enviar" class="boton-enviar">
 				</div>
 			</form>

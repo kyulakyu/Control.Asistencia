@@ -15,10 +15,7 @@ import model.service.ReporteService;
 public class ReporteController {
 
     @Autowired
-    private ReporteService cs;
-
-    @Autowired
-    private RestUsuarioController restUsuarioController; // Inyectar el servicio RestUsuarioController
+    private ReporteService rs;
 
     /**
      * Maneja las solicitudes que se le hacen a la raíz del sitio
@@ -33,7 +30,7 @@ public class ReporteController {
     @RequestMapping(path = "/ListarReportes", method = RequestMethod.GET)
     public ModelAndView mostrarListarReportes() {
         // Obtener la lista de reportes desde el servicio ReporteService
-        List<Reporte> reportes = cs.getReportes();
+        List<Reporte> reportes = rs.getReportes();
 
         ModelAndView modelAndView = new ModelAndView("listarReportes", "reportes", reportes);
         return modelAndView;
@@ -42,21 +39,14 @@ public class ReporteController {
     @RequestMapping(path = "/CrearReporte", method = RequestMethod.POST)
     public ModelAndView crearReporte(Reporte reporte) {
         try {
-            String detalle = reporte.getDetalle(); // Obtenemos el detalle utilizando el método mostrarDetalle()
-            reporte.setDetalle(detalle); // Establecemos el detalle en el objeto Reporte
-            cs.crearReportes(reporte, detalle); // Guardamos la capacitación en la base de datos (asegúrate de que el método crearReportes solo reciba la instancia de Reporte)
+            String detalle = reporte.getDetalle();
+            reporte.setDetalle(detalle);
+            rs.crearReportes(reporte, detalle);
 
-            // Obtener la lista de reportes en formato JSON desde el servicio RestUsuarioController
-            List<Reporte> reportesJson = restUsuarioController.getTresReportes();
-
-            // Agregar la lista de reportes JSON al modelo para que esté disponible en la vista listaReportesJson.jsp
-            ModelAndView jsonModelAndView = new ModelAndView("listaReportesJson");
-            jsonModelAndView.addObject("reportesJson", reportesJson);
-
-            return jsonModelAndView;
+            // Redirigir al usuario a la página "crearReporte" después de guardar el reporte
+            return new ModelAndView("redirect:/CrearReporte");
         } catch (Exception e) {
             e.printStackTrace();
-            // Manejar el error adecuadamente, redirigir a una página de error o mostrar un mensaje de error en la vista.
             return new ModelAndView("error");
         }
     }

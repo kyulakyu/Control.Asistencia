@@ -8,9 +8,8 @@
 <meta charset="UTF-8">
 <title>Listado de Asistencia</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/estilo.css">
 </head>
-
 <body>
 	<%@ include file='sidebar.jsp'%>
 	<div class="container">
@@ -26,12 +25,12 @@
 			</thead>
 			<tbody>
 				<%-- Iterar a través de la lista de capacitaciones enviada desde el controlador --%>
-				<c:forEach var="asistencia" items="${asistencias}">
+				<c:forEach var="asistencias" items="${asistencias}">
 					<tr>
-						<td>${asistencia.id}</td>
-						<td>${asistencia.voluntarioId}</td>
-						<td>${asistencia.fechaAsistencia}</td>
-						<td>${asistencia.mostrarDetalle()}</td>
+						<td>${asistencias.id}</td>
+						<td>${asistencias.voluntarioId}</td>
+						<td>${asistencias.fechaAsistencia}</td>
+						<td>${asistencias.Detalle}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

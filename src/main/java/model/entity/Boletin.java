@@ -9,13 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "asistencia")
+@Table(name = "boletin")
 public class Boletin {
 	// se crean los atributos de la clase Boletin
 	@Id
 	@Column(name = "id")
 	private int idBoletin;
-	private int voluntarioId;
+	private String titulo;
 	private String fechaBoletin;
 	private String detalle;
 
@@ -24,10 +24,10 @@ public class Boletin {
 
 	}
 
-	public Boletin(int idBoletin, int voluntarioId, String fechaBoletin, String detalle) {
+	public Boletin(int idBoletin, String titulo, String fechaBoletin, String detalle) {
 		super();
 		this.idBoletin = idBoletin;
-		this.voluntarioId = voluntarioId;
+		this.titulo = titulo;
 		this.fechaBoletin = fechaBoletin;
         this.detalle = detalle;
 
@@ -53,24 +53,12 @@ public class Boletin {
 		}
 	}
 
-	public int getVoluntarioId() {
-		return voluntarioId;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public boolean setVoluntarioId(int voluntarioId) {
-		String voluntarioIdString = Integer.toString(voluntarioId);
-
-		if (voluntarioIdString != null && !voluntarioIdString.isEmpty()) {
-			try {
-				int id = Integer.parseInt(voluntarioIdString);
-				this.voluntarioId = id;
-				return true; // Indicar que el valor se estableció correctamente
-			} catch (NumberFormatException e) {
-				return false;
-			}
-		} else {
-			return false;
-		}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getFechaBoletin() {

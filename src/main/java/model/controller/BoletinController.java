@@ -15,10 +15,7 @@ import model.service.BoletinService;
 public class BoletinController {
 
     @Autowired
-    private BoletinService cs;
-
-    @Autowired
-    private RestUsuarioController restUsuarioController; // Inyectar el servicio RestUsuarioController
+    private BoletinService bs;
 
     /**
      * Maneja las solicitudes que se le hacen a la raíz del sitio
@@ -32,31 +29,24 @@ public class BoletinController {
 
     @RequestMapping(path = "/ListarBoletines", method = RequestMethod.GET)
     public ModelAndView mostrarListarBoletines() {
-        // Obtener la lista de asistencias desde el servicio BoletinService
-        List<Boletin> asistencias = cs.getBoletines();
+        // Obtener la lista de boletines desde el servicio BoletinService
+        List<Boletin> boletines = bs.getBoletines();
 
-        ModelAndView modelAndView = new ModelAndView("listarBoletines", "asistencias", asistencias);
+        ModelAndView modelAndView = new ModelAndView("listarBoletines", "boletines", boletines);
         return modelAndView;
     }
 
     @RequestMapping(path = "/CrearBoletin", method = RequestMethod.POST)
-    public ModelAndView crearBoletin(Boletin asistencia) {
+    public ModelAndView crearBoletin(Boletin boletin) {
         try {
-            String detalle = asistencia.getDetalle(); // Obtenemos el detalle utilizando el método mostrarDetalle()
-            asistencia.setDetalle(detalle); // Establecemos el detalle en el objeto Boletin
-            cs.crearBoletines(asistencia, detalle); // Guardamos la capacitación en la base de datos (asegúrate de que el método crearBoletines solo reciba la instancia de Boletin)
+            String detalle = boletin.getDetalle();
+            boletin.setDetalle(detalle);
+            bs.crearBoletines(boletin, detalle);
 
-            // Obtener la lista de asistencias en formato JSON desde el servicio RestUsuarioController
-            List<Boletin> asistenciasJson = restUsuarioController.getTresBoletines();
-
-            // Agregar la lista de asistencias JSON al modelo para que esté disponible en la vista listaBoletinesJson.jsp
-            ModelAndView jsonModelAndView = new ModelAndView("listaBoletinesJson");
-            jsonModelAndView.addObject("asistenciasJson", asistenciasJson);
-
-            return jsonModelAndView;
+            // Redirigir al usuario a la página "crearBoletin" después de guardar el boletin
+            return new ModelAndView("redirect:/CrearBoletin");
         } catch (Exception e) {
             e.printStackTrace();
-            // Manejar el error adecuadamente, redirigir a una página de error o mostrar un mensaje de error en la vista.
             return new ModelAndView("error");
         }
     }

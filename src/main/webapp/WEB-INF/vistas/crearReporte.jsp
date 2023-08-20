@@ -17,15 +17,15 @@
 				<h1 class="tituloContacto">Formulario de Reportes</h1>
 				<label for="voluntarioId">Ingrese ID Voluntario:</label><br>
 				<input type="text" id="voluntarioId" name="voluntarioId" title="Campo Obligatorio"><br>
-				<span id="voluntarioIdValidationMessage" style="color: red;"></span> <br>
+				<span id="voluntarioIdValidationMessage" style="color: red;"></span><br>
 				<label for="fechaReporte">Ingrese el Día del incidente:</label><br>
 				<input type="text" id="fechaReporte" name="fechaReporte" title="Formato DD/MM/AAAA"><br>
 				<span id="fechaReporteValidationMessage" style="color: red;"></span><br> 
 				<label for="detalle">Ingrese el detalle:</label><br> 
 				<input type="text" id="detalle" name="detalle" title="Campo Obligatorio / Max 70 Caracteres."><br>
-				<span id="detalleValidationMessage" style="color: red;"></span> <br>
+				<span id="detalleValidationMessage" style="color: red;"></span><br>
 				<br>
-				<div class="contenedor-boton">
+				<div style="display: flex; justify-content: center;" class="mb-5">
 					<input type="submit" value="Enviar" class="boton-enviar">
 				</div>
 			</form>
