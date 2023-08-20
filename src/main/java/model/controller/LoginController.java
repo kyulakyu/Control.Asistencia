@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
 public class LoginController {
 
- 
-
-    @RequestMapping(value = "/login")
-    public ModelAndView login() {
+    /**
+     * Maneja las solicitudes que se le hacen a la raíz del sitio
+     * 
+     * @return un objeto {@link ModelAndView} con la respuesta al cliente
+     */
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public ModelAndView mostrarLogin() {
         return new ModelAndView("login");
     }
 
@@ -29,8 +33,6 @@ public class LoginController {
         if (auth != null) {
             SecurityContextHolder.clearContext(); // Esto limpiará la autenticación actual
         }
-
-     
        return new ModelAndView("redirect:/");
     }
 
@@ -47,16 +49,25 @@ public class LoginController {
     private boolean isCliente() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
-            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_CLIENTE"));
+            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Cliente"));
         }
         return false;
     }
 
+    // Método para verificar si el usuario tiene el rol "voluntario"
+    private boolean isVoluntario() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Voluntario"));
+        }
+        return false;
+    }
+    
     // Método para verificar si el usuario tiene el rol "administrativo"
     private boolean isAdministrativo() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
-            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMINISTRATIVO"));
+            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Administrativo"));
         }
         return false;
     }

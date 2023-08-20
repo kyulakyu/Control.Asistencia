@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import model.entity.Administrativo;
 import model.entity.Cliente;
-import model.entity.Profesional;
+import model.entity.Voluntario;
 import model.entity.Usuario;
 import model.repository.IUsuarioRepository;
 
@@ -29,8 +29,8 @@ public class UsuarioService {
 
         if (u instanceof Cliente) {
             usuarioGuardado = usRepo.save((Cliente) u);
-        } else if (u instanceof Profesional) {
-            usuarioGuardado = usRepo.save((Profesional) u);
+        } else if (u instanceof Voluntario) {
+            usuarioGuardado = usRepo.save((Voluntario) u);
         } else if (u instanceof Administrativo) {
             usuarioGuardado = usRepo.save((Administrativo) u);
         } else {
@@ -62,7 +62,7 @@ public class UsuarioService {
     
     
 
-    public List<Profesional> getAllProfesionales() {
+    public List<Voluntario> getAllProfesionales() {
         return usRepo.findAllProfesionales();
     }
 }

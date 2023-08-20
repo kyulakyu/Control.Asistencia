@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import model.entity.Administrativo;
 import model.entity.Cliente;
-import model.entity.Profesional;
+import model.entity.Voluntario;
 import model.service.AdministrativoService;
 import model.service.ClienteService;
-import model.service.ProfesionalService;
+import model.service.VoluntarioService;
 
 @Controller
 public class EditarController {
@@ -26,28 +26,22 @@ public class EditarController {
 	@Autowired
 	private ClienteService cl;
 	@Autowired
-	private ProfesionalService pr;
+	private VoluntarioService pr;
 	
-	@GetMapping("/EditarProfesional")
-	  public String editarProfesional(@RequestParam("id") int id, Model model) {
-	     
-	         
-	          Profesional profesional = pr.getProfesionalWithProperties(id);
-	          if (profesional != null) {
+	@GetMapping("/EditarVoluntario")
+	  public String editarVoluntario(@RequestParam("id") int id, Model model) {
+	          Voluntario voluntario = pr.getVoluntarioWithProperties(id);
+	          if (voluntario != null) {
 	              
-	              model.addAttribute("profesional", profesional);
-	              return "editarProfesional"; // Nombre de la página de edición JSP
+	              model.addAttribute("voluntario", voluntario);
+	              return "editarVoluntario"; // Nombre de la página de edición JSP
 	          } else {
 	              return "redirect:/"; // Redirigir si no se encuentra el administrativo
 	          }
-	      
 	  }
-	
-	 
+
 	  @GetMapping("/EditarAdministrativo")
 	  public String editarAdministrativo(@RequestParam("id") int id, Model model) {
-	     
-	         
 	          Administrativo administrativo = ad.getAdministrativoWithProperties(id);
 	          if (administrativo != null) {
 	              
@@ -56,12 +50,10 @@ public class EditarController {
 	          } else {
 	              return "redirect:/"; // Redirigir si no se encuentra el administrativo
 	          }
-	      
 	  }
+	  
 	  @GetMapping("/EditarCliente")
 	  public String editarCliente(@RequestParam("id") int id, Model model) {
-	     
-	         
 	          Cliente cliente = cl.getClienteWithProperties(id);
 	          if (cliente != null) {
 	              
@@ -70,10 +62,7 @@ public class EditarController {
 	          } else {
 	              return "redirect:/"; // Redirigir si no se encuentra el administrativo
 	          }
-	      
 	  }
-	 
-	  
 
 	    @PostMapping("/GuardarEdicionAdministrativo")
 	    public String guardarEdicionAdministrativo(@ModelAttribute Administrativo administrativo) {
@@ -87,9 +76,9 @@ public class EditarController {
 	        return "redirect:/ListarUsuarios"; // Redirigir después de guardar los cambios
 	    }
 	    
-	    @PostMapping("/GuardarEdicionProfesional")
-	    public String guardarEdicionProfesional(@ModelAttribute Profesional profesional) {
-	        pr.update(profesional);
+	    @PostMapping("/GuardarEdicionVoluntario")
+	    public String guardarEdicionVoluntario(@ModelAttribute Voluntario voluntario) {
+	        pr.update(voluntario);
 	        return "redirect:/ListarUsuarios"; // Redirigir después de guardar los cambios
 	    }
 	    

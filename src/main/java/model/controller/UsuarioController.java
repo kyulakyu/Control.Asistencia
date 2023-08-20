@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.entity.Administrativo;
 import model.entity.Cliente;
-import model.entity.Profesional;
+import model.entity.Voluntario;
 import model.entity.Usuario;
 import model.service.UsuarioService;
 
@@ -35,14 +35,14 @@ public class UsuarioController {
 	    if (tipo == null || tipo.isEmpty() || tipo.equals("todos")) {
 	        listarUsuarios.put("Cliente", us.getAllClientes());
 	        listarUsuarios.put("Administrativo", us.getAllAdministrativos());
-	        listarUsuarios.put("Profesional", us.getAllProfesionales());
+	        listarUsuarios.put("Voluntario", us.getAllProfesionales());
 	    } else {
 	        if (tipo.equals("Cliente")) {
 	            listarUsuarios.put("Cliente", us.getAllClientes());
 	        } else if (tipo.equals("Administrativo")) {
 	            listarUsuarios.put("Administrativo", us.getAllAdministrativos());
-	        } else if (tipo.equals("Profesional")) {
-	            listarUsuarios.put("Profesional", us.getAllProfesionales());
+	        } else if (tipo.equals("Voluntario")) {
+	            listarUsuarios.put("Voluntario", us.getAllProfesionales());
 	        }
 	    }
 
@@ -59,30 +59,27 @@ public class UsuarioController {
                                       @RequestParam("nombres") String nombres,
                                       @RequestParam("apellidos") String apellidos,
                                       @RequestParam("telefono") Integer telefono,
-                                      @RequestParam("afp") String afp,
-                                      @RequestParam("sistemaDeSalud") String sistemaDeSalud,
                                       @RequestParam("direccion") String direccion,
                                       @RequestParam("comuna") String comuna,
-                                      @RequestParam("edad") Integer edad,
                                       @RequestParam("nombre") String nombre,
                                       @RequestParam("fechaNacimiento") String fechaNacimiento,
                                       @RequestParam("run") int run,
-                                      @RequestParam("titulo") String titulo,
+                                      @RequestParam("runVoluntario") int runVoluntario,
+                                      @RequestParam("cargo") String cargo,
                                       @RequestParam("fechaDeIngreso") String fechaDeIngreso,
-                                      @RequestParam("area") String area,
-                                      @RequestParam("experienciaPrevia") String experienciaPrevia) {
+                                      @RequestParam("clienteAdministrativo") String clienteAdministrativo) {
         try {
             int idGenerado = 0; // Inicializamos la variable idGenerado
             if ("Cliente".equals(tipo)) {
-                Cliente cliente = new Cliente(nombre, fechaNacimiento, run, tipo, rut, nombres, apellidos, telefono, afp, sistemaDeSalud, direccion, comuna, edad);
+                Cliente cliente = new Cliente(fechaNacimiento, tipo, telefono, direccion, comuna, rut, nombre);
                 Cliente clienteGuardado = (Cliente) us.crearUsuario(cliente);
                 idGenerado = clienteGuardado.getId();
-            } else if ("Profesional".equals(tipo)) {
-                Profesional profesional = new Profesional(nombre, fechaNacimiento, run, tipo, titulo, fechaDeIngreso);
-                Profesional profesionalGuardado = (Profesional) us.crearUsuario(profesional);
+            } else if ("Voluntario".equals(tipo)) {
+                Voluntario voluntario = new Voluntario(fechaNacimiento, tipo, telefono, direccion, comuna, runVoluntario, nombres, apellidos, cargo, fechaDeIngreso);
+                Voluntario profesionalGuardado = (Voluntario) us.crearUsuario(voluntario);
                 idGenerado = profesionalGuardado.getId();
             } else if ("Administrativo".equals(tipo)) {
-                Administrativo administrativo = new Administrativo(nombre, fechaNacimiento, run, tipo, area, experienciaPrevia);
+                Administrativo administrativo = new Administrativo(fechaNacimiento, tipo, telefono, direccion, comuna, run, nombres, apellidos, clienteAdministrativo);
                 Administrativo administrativoGuardado = (Administrativo) us.crearUsuario(administrativo);
                 idGenerado = administrativoGuardado.getId();
             } else {
@@ -99,7 +96,6 @@ public class UsuarioController {
         }
     }
 
-
     @RequestMapping(path = "/ListarUsuariosConId", method = RequestMethod.GET)
     public ModelAndView mostrarListarUsuariosConId(@RequestParam(value = "idGenerado", required = false) Integer idGenerado) {
         List<Usuario> usuarios = us.getUsuarios();
@@ -108,5 +104,3 @@ public class UsuarioController {
         return modelAndView;
     }
 }
-    
-    	
