@@ -7,13 +7,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/estilo.css">
 <title>Crear Usuario</title>
-<body class="prueba">
+<body>
 	<%@ include file='sidebar.jsp'%>
-	<div class="form-container">
-		<div class=contacto>
-			<form action="/control.asistencia/CrearUsuario" method="post"
-				onsubmit="return enviarFormulario(event)">
-				<h1 class=tituloContacto>Formulario de Creacion de Usuario</h1>
+	<div class=contacto style="display: flex; justify-content: center;" data-mensaje="${mensaje}">
+			<form action="/control.asistencia/CrearUsuario" method="post" onsubmit="return enviarFormulario(event)">
+				<h1 class=tituloContacto>Creacion de Usuario</h1>
 				<label for="tipo">Selecciona un Tipo:</label> <select id="tipo"
 					name="tipo" onchange="mostrarCamposAdicionales()">
 					<option value="Seleccione">Seleccione</option>
@@ -26,7 +24,7 @@
 					<input type="text" id="correo" name="correo" title="Campo Obligatorio"><br>
 					<span id="correoValidationMessage" style="color: red;"></span><br>
 					<label for="password">Ingrese contraseña:</label><br> 
-					<input type="text" id="password" name="password" title="Campo Obligatorio"><br>
+					<input type="password" id="password" name="password" title="Campo Obligatorio"><br>
 					<span id="passwordValidationMessage" style="color: red;"></span><br> 
 					<label for="fechaNacimiento">Ingrese fecha de nacimiento:</label><br> 
 					<input type="text" id="fechaNacimiento"	name="fechaNacimiento" title="Formato DD/MM/AAAA"><br>
@@ -84,13 +82,11 @@
 					<span id="clienteAdministrativoValidationMessage" style="color: red;"></span><br> 
 				</div>
 				<br>
-				<div class="contenedor-boton">
+				<div style="display: flex; justify-content: center;" class="mb-5">
 					<input type="submit" value="Enviar" class="boton-enviar">
 				</div>
 			</form>
 		</div>
-	</div>
-
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

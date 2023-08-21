@@ -8,13 +8,11 @@
 <link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/estilo.css">
 <title>Crear Boletin</title>
 </head>
-<body class="asistencia">
+<body>
 	<%@ include file='sidebar.jsp'%>
-	<div class="form-container">
-		<div class="contacto">
-					<form action="/control.asistencia/CrearBoletin" method="post"
-				onsubmit="return enviarFormulario(event)">
-				<h1 class="tituloContacto">Formulario de Boletin</h1>
+		<div class=contacto style="display: flex; justify-content: center;" data-mensaje="${mensaje}">
+				<form action="/control.asistencia/CrearBoletin" method="post" onsubmit="return enviarFormulario(event)">
+				<h1 class="tituloContacto">Crear Boletin</h1>
 				<label for="titulo">Titulo:</label><br>
 				<input type="text" id="titulo" name="titulo" title="Campo Obligatorio"><br>
 				<span id="tituloValidationMessage" style="color: red;"></span> <br>
@@ -30,12 +28,12 @@
 				</div>
 			</form>
 		</div>
-	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 		crossorigin="anonymous"></script>
-	<!-- Incluir el archivo crearCapacitacion.js -->
+	<!-- Incluir el archivo crearBoletin.js -->
 	<script src="/control.asistencia/res/js/crearBoletin.js"></script>
 	<%@ include file='footer.jsp'%>
 </body>
