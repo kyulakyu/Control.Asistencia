@@ -25,12 +25,12 @@
 			</thead>
 			<tbody>
 				<%-- Iterar a través de la lista de capacitaciones enviada desde el controlador --%>
-				<c:forEach var="asistencias" items="${asistencias}">
+				<c:forEach var="asistencia" items="${asistencias}">
 					<tr>
-						<td>${asistencias.id}</td>
-						<td>${asistencias.voluntarioId}</td>
-						<td>${asistencias.fechaAsistencia}</td>
-						<td>${asistencias.Detalle}</td>
+						<td>${asistencia.idAsistencia}</td>
+						<td>${asistencia.voluntarioId}</td>
+						<td>${asistencia.fechaAsistencia}</td>
+						<td>${asistencia.detalle}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

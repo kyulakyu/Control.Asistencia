@@ -24,7 +24,7 @@
 					<input type="text" id="correo" name="correo" title="Campo Obligatorio"><br>
 					<span id="correoValidationMessage" style="color: red;"></span><br>
 					<label for="password">Ingrese contraseña:</label><br> 
-					<input type="password" id="password" name="password" title="Campo Obligatorio"><br>
+					<input type="text" id="password" name="password" title="Campo Obligatorio"><br>
 					<span id="passwordValidationMessage" style="color: red;"></span><br> 
 					<label for="fechaNacimiento">Ingrese fecha de nacimiento:</label><br> 
 					<input type="text" id="fechaNacimiento"	name="fechaNacimiento" title="Formato DD/MM/AAAA"><br>

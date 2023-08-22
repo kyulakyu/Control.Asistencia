@@ -30,7 +30,6 @@ public class BoletinController {
 
     @RequestMapping(path = "/ListarBoletines", method = RequestMethod.GET)
     public ModelAndView mostrarListarBoletines() {
-        // Obtener la lista de boletines desde el servicio BoletinService
         List<Boletin> boletines = bs.getBoletines();
 
         ModelAndView modelAndView = new ModelAndView("listarBoletines", "boletines", boletines);
