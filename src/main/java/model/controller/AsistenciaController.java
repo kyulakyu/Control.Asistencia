@@ -1,4 +1,4 @@
- package model.controller;
+package model.controller;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import model.entity.Asistencia;
 import model.service.AsistenciaService;
@@ -37,17 +38,20 @@ public class AsistenciaController {
     }
 
     @RequestMapping(path = "/CrearAsistencia", method = RequestMethod.POST)
-    public ModelAndView crearAsistencia(Asistencia asistencia) {
+    public ModelAndView crearAsistencia(Asistencia asistencia, RedirectAttributes redirectAttributes) {
         try {
             String detalle = asistencia.getDetalle();
             asistencia.setDetalle(detalle);
             as.crearAsistencias(asistencia, detalle);
 
-            // Redirigir al usuario a la página "crearAsistencia" después de guardar el asistencia
+            redirectAttributes.addFlashAttribute("mensaje", "La información fue enviada correctamente.");
+            
+            // Redirigir al usuario a la página "crearAsistencia" después de guardar la asistencia
             return new ModelAndView("redirect:/CrearAsistencia");
         } catch (Exception e) {
             e.printStackTrace();
-            return new ModelAndView("error");
+            redirectAttributes.addFlashAttribute("mensaje", "No se pudo enviar la información.");
+            return new ModelAndView("redirect:/CrearAsistencia");
         }
     }
 }

@@ -11,29 +11,29 @@ import model.repository.IBoletinRepository;
 @Service
 public class BoletinService {
 
-    private final IBoletinRepository asistenciaRepository;
+    private final IBoletinRepository boletinRepository;
 
     @Autowired
-    public BoletinService(IBoletinRepository asistenciaRepository) {
-        this.asistenciaRepository = asistenciaRepository;
+    public BoletinService(IBoletinRepository boletinRepository) {
+        this.boletinRepository = boletinRepository;
     }
 
     public List<Boletin> getBoletines() {
-        return asistenciaRepository.findAll();
+        return boletinRepository.findAll();
     }
 
     public List<Boletin> getUltimosTresBoletines() {
-        List<Boletin> todasLasBoletines = asistenciaRepository.findUltimosTresBoletines();
-        return limitarATres(todasLasBoletines);
+        List<Boletin> todosLosBoletines = boletinRepository.findUltimosTresBoletines();
+        return limitarATres(todosLosBoletines);
     }
 
-    private List<Boletin> limitarATres(List<Boletin> asistencias) {
-        return asistencias.subList(0, Math.min(asistencias.size(), 3));
+    private List<Boletin> limitarATres(List<Boletin> boletines) {
+        return boletines.subList(0, Math.min(boletines.size(), 3));
     }
 
     public void crearBoletines(Boletin b, String detalle) {
-        // Antes de guardar la capacitación, asignamos el detalle usando el método mostrarDetalle()
-        b.getDetalle();
-        asistenciaRepository.save(b);
+        // Antes de guardar el boletín, asignamos el detalle usando el método setDetalle()
+        b.setDetalle(detalle);
+        boletinRepository.save(b);
     }
 }

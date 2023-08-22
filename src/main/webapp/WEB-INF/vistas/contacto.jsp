@@ -8,19 +8,21 @@
 <link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/estilo.css">
 <title>Formulario de Contacto</title>
 </head>
-
 <body>
 	<%@ include file='sidebar.jsp'%>
-	<div class=contacto style="display: flex; justify-content: center;">
+	<div class=contacto style="display: flex; justify-content: center;" data-mensaje="${mensaje}">
 		<form action="/control.asistencia/CrearContacto" method="post" class="mb-5" class="mt-5">
 			<h1 class=tituloContacto>Formulario de Contacto</h1>
 			<label for="nombre">Nombre:</label><br> 
-			<input type="text" id="nombre" name="nombre"><br><br> 
+			<input type="text" id="nombre" name="nombre" title="Campo Obligatorio"><br>
+			<span id="nombreValidationMessage" style="color: red;"></span><br> 
 			<label for="email">Email:</label><br> 
-			<input type="email" id="email" name="email"><br><br> 
+			<input type="text" id="email" name="email" title="Campo Obligatorio"><br>
+			<span id="emailValidationMessage" style="color: red;"></span><br>
 			<label for="comentario">Comentario:</label><br>
-			<textarea id="comentario" name="comentario"></textarea>
-			<br><br>
+			<input type="text" id="comentario" name="comentario" title="Campo Obligatorio / Max 70 Caracteres."><br>
+			<span id="comentarioValidationMessage" style="color: red;"></span><br>
+			<br>
 			<div style="display: flex; justify-content: center;" class="mb-5">
 				<input type="submit" value="Enviar" class="boton-enviar">
 			</div>

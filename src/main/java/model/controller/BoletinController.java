@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import model.entity.Boletin;
 import model.service.BoletinService;
@@ -29,7 +30,6 @@ public class BoletinController {
 
     @RequestMapping(path = "/ListarBoletines", method = RequestMethod.GET)
     public ModelAndView mostrarListarBoletines() {
-        // Obtener la lista de boletines desde el servicio BoletinService
         List<Boletin> boletines = bs.getBoletines();
 
         ModelAndView modelAndView = new ModelAndView("listarBoletines", "boletines", boletines);
@@ -37,17 +37,20 @@ public class BoletinController {
     }
 
     @RequestMapping(path = "/CrearBoletin", method = RequestMethod.POST)
-    public ModelAndView crearBoletin(Boletin boletin) {
+    public ModelAndView crearBoletin(Boletin boletin, RedirectAttributes redirectAttributes) {
         try {
             String detalle = boletin.getDetalle();
             boletin.setDetalle(detalle);
             bs.crearBoletines(boletin, detalle);
 
+            redirectAttributes.addFlashAttribute("mensaje", "La información fue enviada correctamente.");
+            
             // Redirigir al usuario a la página "crearBoletin" después de guardar el boletin
             return new ModelAndView("redirect:/CrearBoletin");
         } catch (Exception e) {
             e.printStackTrace();
-            return new ModelAndView("error");
+            redirectAttributes.addFlashAttribute("mensaje", "No se pudo enviar la información.");
+            return new ModelAndView("redirect:/CrearBoletin");
         }
     }
 }

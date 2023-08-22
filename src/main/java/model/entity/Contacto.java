@@ -6,62 +6,55 @@ import javax.persistence.*;
 @Table(name = "Contacto")
 public class Contacto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "nombre", nullable = false)
+	private String nombre;
+	@Column(name = "email", nullable = false)
+	private String email;
+	@Column(name = "comentario")
+	private String comentario;
 
-    @Column(name = "nombre", nullable = false)
-    private String nombre;
+	// Constructores, getters y setters
+	public Contacto() {
+	}
 
-    @Column(name = "email", nullable = false)
-    private String email;
+	public Contacto(String nombre, String email, String comentario) {
+		this.nombre = nombre;
+		this.email = email;
+		this.comentario = comentario;
+	}
 
-    @Column(name = "comentario")
-    private String comentario;
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    // Constructores, getters y setters
+	public String getNombre() {
+		return nombre;
+	}
 
-    public Contacto() {
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public Contacto(String nombre, String email, String comentario) {
-        this.nombre = nombre;
-        this.email = email;
-        this.comentario = comentario;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    // Getter y Setter para id
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public String getComentario() {
+		return comentario;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-    }
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+}

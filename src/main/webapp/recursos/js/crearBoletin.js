@@ -38,5 +38,23 @@ detalleInput.addEventListener('input', function() {
     detalleValidationMessage.textContent = '';
   }
 });
+	// Obtener el mensaje del atributo flash del modelo
+	var mensaje = document.querySelector("[data-mensaje]").getAttribute("data-mensaje");
 
+	// Mostrar SweetAlert según el mensaje recibido
+	if (mensaje) {
+		if (mensaje === "La información fue enviada correctamente.") {
+			Swal.fire({
+				icon: 'success',
+				title: 'Éxito',
+				text: mensaje
+			});
+		} else {
+			Swal.fire({
+				icon: 'error',
+				title: 'Error',
+				text: mensaje
+			});
+		}
+	}
 });
