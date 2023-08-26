@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%-- Iterar a través de la lista de capacitaciones enviada desde el controlador --%>
+				<%-- Iterar a través de la lista de asistencias enviada desde el controlador --%>
 				<c:forEach var="asistencia" items="${asistencias}">
 					<tr>
 						<td>${asistencia.idAsistencia}</td>

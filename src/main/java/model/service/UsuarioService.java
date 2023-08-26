@@ -52,18 +52,8 @@ public class UsuarioService {
         return usRepo.findAllAdministrativos();
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    public List<Voluntario> getAllProfesionales() {
-        return usRepo.findAllProfesionales();
+    public List<Voluntario> getAllVoluntarios() {
+        return usRepo.findAllVoluntarios();
     }
 }
 

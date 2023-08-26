@@ -18,5 +18,5 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("SELECT a FROM Administrativo a")
     List<Administrativo> findAllAdministrativos();
 	@Query("SELECT p FROM Voluntario p")
-    List<Voluntario> findAllProfesionales();
+    List<Voluntario> findAllVoluntarios();
 }

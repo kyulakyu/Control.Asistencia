@@ -24,9 +24,9 @@ public class Cliente extends Usuario {
 	}
 
 //se crea el constructor con todos los atributos de la clase
-	public Cliente(String fechaDeNacimiento, String tipo, Integer telefono, String direccion, String comuna,
+	public Cliente(String fechaDeNacimiento, String tipo, String correo, String password, Integer telefono, String direccion, String comuna,
 			Integer rut, String nombre) {
-		super(fechaDeNacimiento, tipo, telefono, direccion, comuna);
+		super(fechaDeNacimiento, tipo, correo, password, telefono, direccion, comuna);
 		this.rut = rut;
 		this.setNombre(nombre);
 	}
