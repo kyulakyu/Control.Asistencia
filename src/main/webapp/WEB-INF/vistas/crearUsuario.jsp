@@ -38,7 +38,6 @@
 					<label for="comuna">Comuna:</label><br> 
 					<input type="text" id="comuna" name="comuna" title="Campo Obligatorio"><br>
 					<span id="comunaValidationMessage" style="color: red;"></span>
-				
 				<!-- Datos correspondientes al usuario de tipo Cliente -->
 				<div id="camposCliente" style="display: none;">
 					<label for="rut">RUT:</label><br> 
@@ -66,7 +65,7 @@
 					<input type="text" id="fechaDeIngreso" name="fechaDeIngreso" title="/ En Formato DD/MM/AAAA"><br>
 					<span id="fechaDeIngresoValidationMessage" style="color: red;"></span><br>
 				</div>
-
+				<!--  Datos correspondientes al usuario de tipo Administrativo-->
 				<div id="camposAdministrativo" style="display: none;">
 					<label for="run">Ingrese run:</label><br> 
 					<input type="text" id="run" name="run" title="Campo Obligatorio / Debe Introducir un Valor Númerico."><br>

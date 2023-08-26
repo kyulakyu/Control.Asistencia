@@ -1,16 +1,12 @@
 package model.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 import model.entity.Administrativo;
 import model.entity.Cliente;
@@ -67,19 +63,19 @@ public class EditarController {
 	    @PostMapping("/GuardarEdicionAdministrativo")
 	    public String guardarEdicionAdministrativo(@ModelAttribute Administrativo administrativo) {
 	        ad.update(administrativo);
-	        return "redirect:/ListarUsuarios"; // Redirigir después de guardar los cambios
+	        return "redirect:/ListarUsuario"; // Redirigir después de guardar los cambios
 	    }
 	    
 	    @PostMapping("/GuardarEdicionCliente")
 	    public String guardarEdicionCliente(@ModelAttribute Cliente cliente) {
 	        cl.update(cliente);
-	        return "redirect:/ListarUsuarios"; // Redirigir después de guardar los cambios
+	        return "redirect:/ListarUsuario"; // Redirigir después de guardar los cambios
 	    }
 	    
 	    @PostMapping("/GuardarEdicionVoluntario")
 	    public String guardarEdicionVoluntario(@ModelAttribute Voluntario voluntario) {
 	        pr.update(voluntario);
-	        return "redirect:/ListarUsuarios"; // Redirigir después de guardar los cambios
+	        return "redirect:/ListarUsuario"; // Redirigir después de guardar los cambios
 	    }
 	    
 }
