@@ -49,7 +49,7 @@
 				<i class='bx bx-user-check icon'></i>
 				<span class="text nav-text">Crear Usuario</span>
 				</a></li>
-				<li class="nav-link"><a href="ListarUsuarios"> 
+				<li class="nav-link"><a href="ListarUsuario"> 
 				<i class='bx bx-list-ul icon'></i>
 				<span class="text nav-text">Listado Usuarios</span>
 				</a></li>

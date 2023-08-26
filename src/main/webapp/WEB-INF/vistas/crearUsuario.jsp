@@ -53,12 +53,12 @@
 					<label for="runVoluntario">Ingrese run:</label><br> 
 					<input type="text" id="runVoluntario" name="runVoluntario" title="Campo Obligatorio / Debe Introducir un Valor Númerico."><br>
 					<span id="runVoluntarioValidationMessage" style="color: red;"></span><br>
-					<label for="nombres">Nombres:</label><br> 
-					<input type="text" id="nombres" name="nombres" title="Campo Obligatorio"><br>
-					<span id="nombresValidationMessage" style="color: red;"></span><br> 
-					<label for="apellidos">Apellidos:</label><br> 
-					<input type="text" id="apellidos" name="apellidos" title="Campo Obligatorio"><br>
-					<span id="apellidosValidationMessage" style="color: red;"></span><br> 
+					<label for="nombresV">Nombres:</label><br> 
+					<input type="text" id="nombresV" name="nombresV" title="Campo Obligatorio"><br>
+					<span id="nombresVValidationMessage" style="color: red;"></span><br> 
+					<label for="apellidosV">Apellidos:</label><br> 
+					<input type="text" id="apellidosV" name="apellidosV" title="Campo Obligatorio"><br>
+					<span id="apellidosVValidationMessage" style="color: red;"></span><br> 
 					<label for="cargo">Cargo:</label><br> 
 					<input type="text" id="cargo" name="cargo" title="Campo Obligatorio"><br>
 					<span id="cargoValidationMessage" style="color: red;"></span><br> 

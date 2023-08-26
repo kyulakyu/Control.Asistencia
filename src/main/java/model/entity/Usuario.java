@@ -7,13 +7,19 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING) // Cambia el nombre de la columna DTYPE a "tipo"
 @Table(name = "usuarios")
 public class Usuario {
 	// se crean los atributos de la clase Usuario
@@ -22,7 +28,10 @@ public class Usuario {
 	@Column(name = "id")
 	private int id;
 	private String fechaNacimiento;
+	@Column(name = "tipo", insertable = false, updatable = false)
 	private String tipo;
+	private String correo;
+	private String password;
 	private Integer telefono;
 	private String direccion;
 	private String comuna;
@@ -32,13 +41,32 @@ public class Usuario {
 	}
 
 	// se crea el constructor con todos los atributos de la clase
-	public Usuario(String fechaNacimiento, String tipo, Integer telefono, String direccion, String comuna) {
+	public Usuario(String fechaNacimiento, String tipo, String correo, String password, Integer telefono, String direccion, String comuna) {
 		super();
 		this.tipo = tipo;
+		this.correo = correo;
+		this.password = password;
 		this.fechaNacimiento = fechaNacimiento;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.comuna = comuna;
+	}
+
+	
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	// se crean los metodos de acceso y modificadores de yodos los atributos
@@ -55,7 +83,7 @@ public class Usuario {
 	}
 
 	public boolean setTipo(String tipo) {
-		if (tipo.equals("Cliente") || tipo.equals("voluntario")) {
+		if (tipo.equals("Cliente") || tipo.equals("Voluntario")) {
 			this.tipo = tipo;
 			return true; // El tipo se estableció correctamente
 		} else {

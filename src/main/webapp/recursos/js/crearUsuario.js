@@ -219,6 +219,34 @@ apellidosInput.addEventListener('input', function() {
 	}
 });
 
+//Validar Campo NombresV
+var nombresVInput = document.getElementById('nombresV');
+var nombresVValidationMessage = document.getElementById('nombresVValidationMessage');
+
+nombresVInput.addEventListener('input', function() {
+	var nombresVValue = nombresVInput.value.trim();
+
+	if (nombresVValue === '') {
+		nombresVValidationMessage.textContent = 'Por favor, introduzca nombres. Campo Obligatorio';
+	} else {
+		nombresVValidationMessage.textContent = '';
+	}
+});
+
+// Validar Campo Apellidos
+var apellidosVInput = document.getElementById('apellidosV');
+var apellidosVValidationMessage = document.getElementById('apellidosVValidationMessage');
+
+apellidosVInput.addEventListener('input', function() {
+	var apellidosVValue = apellidosVInput.value.trim();
+
+	if (apellidosVValue === '') {
+		apellidosVValidationMessage.textContent = 'Por favor, introduzca apellidos. Campo Obligatorio';
+	} else {
+		apellidosVValidationMessage.textContent = '';
+	}
+});
+
 //Validar Campo Cargo
 var cargoInput = document.getElementById('cargo');
 var cargoValidationMessage = document.getElementById('cargoValidationMessage');

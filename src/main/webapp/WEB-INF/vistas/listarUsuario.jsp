@@ -20,7 +20,7 @@
 	<%@ include file='sidebar.jsp'%>
 	<div class="container" style="text-align: center;">
 		<h1 style="text-align: center; margin-bottom: 20px;">Usuarios:</h1>
-		<form id="tipoForm" action="ListarUsuarios" method="get">
+		<form id="tipoForm" action="ListarUsuario" method="get">
 			<label for="tipo">Selecciona un Tipo:</label> <select id="tipo"
 				name="tipo" onchange="document.getElementById('tipoForm').submit();">
 				<option value="todos">Seleccione</option>
@@ -30,22 +30,21 @@
 			</select>
 		</form>
 		<%
-		if (request.getAttribute("listarUsuarios") != null) {
+		if (request.getAttribute("listarUsuario") != null) {
 			String tipoSeleccionado = request.getParameter("tipo");
 			if (tipoSeleccionado == null || tipoSeleccionado.isEmpty()) {
 				tipoSeleccionado = "todos"; // Establece un valor predeterminado si no se proporciona el parámetro "tipo"
 			}
 			HashMap<String, List<? extends Usuario>> usuariosMap = (HashMap<String, List<? extends Usuario>>) request
-			.getAttribute("listarUsuarios");
+			.getAttribute("listarUsuario");
 			List<? extends Usuario> usuarios = usuariosMap.get(tipoSeleccionado);
 		%>
-		<table id="tablaUsuarios" class="table table-Dark">
+		<table id="tablaUsuarios" class="table">
 			<thead>
 				<tr>
 					<%
 					if (tipoSeleccionado.equals("Cliente")) {
 					%>
-					<th>Tipo</th>
 					<th>F. nacimiento</th>
 					<th>Rut</th>
 					<th>Nombre</th>
@@ -56,7 +55,6 @@
 					<%
 					} else if (tipoSeleccionado.equals("Voluntario")) {
 					%>
-					<th>Tipo</th>
 					<th>F. nacimiento</th>
 					<th>Run</th>
 					<th>Nombres</th>
@@ -65,12 +63,11 @@
 					<th>Direccion</th>
 					<th>Comuna</th>
 					<th>F. Ingreso</th>
+					<th>Cargo</th>
 					<th>Editar</th>
 					<%
 					} else if (tipoSeleccionado.equals("Administrativo")) {
 					%>
-					<th>Usuario</th>
-					<th>Tipo</th>
 					<th>F. nacimiento</th>
 					<th>Run</th>
 					<th>Nombres</th>
@@ -93,10 +90,9 @@
 					Cliente cliente = (Cliente) usuario;
 				%>
 				<tr>
-					<td><%=cliente.getNombre()%></td>
-					<td><%=cliente.getTipo()%></td>
 					<td><%=cliente.getFechaNacimiento()%></td>
 					<td><%=cliente.getRut()%></td>
+					<td><%=cliente.getNombre()%></td>
 					<td><%=cliente.getTelefono()%></td>
 					<td><%=cliente.getDireccion()%></td>
 					<td><%=cliente.getComuna()%></td>
@@ -107,15 +103,15 @@
 				Voluntario voluntario = (Voluntario) usuario;
 				%>
 				<tr>
-					<td><%=voluntario.getTipo()%></td>
 					<td><%=voluntario.getFechaNacimiento()%></td>
 					<td><%=voluntario.getRunVoluntario()%></td>
-					<td><%=voluntario.getNombres()%></td>
-					<td><%=voluntario.getApellidos()%></td>
+					<td><%=voluntario.getNombresV()%></td>
+					<td><%=voluntario.getApellidosV()%></td>
 					<td><%=voluntario.getTelefono()%></td>
 					<td><%=voluntario.getDireccion()%></td>
 					<td><%=voluntario.getComuna()%></td>
 					<td><%=voluntario.getFechaDeIngreso()%></td>
+					<td><%=voluntario.getCargo()%></td>
 
 					<td><a href="/control.asistencia/EditarVoluntario?id=<%=voluntario.getId()%>">Editar</a></td>
 				</tr>
@@ -125,7 +121,6 @@
 				Administrativo administrativo = (Administrativo) usuario;
 				%>
 				<tr>
-					<td><%=administrativo.getTipo()%></td>
 					<td><%=administrativo.getFechaNacimiento()%></td>
 					<td><%=administrativo.getRun()%></td>
 					<td><%=administrativo.getNombres()%></td>
