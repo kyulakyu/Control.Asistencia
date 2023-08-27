@@ -16,7 +16,6 @@
 <!----===== Boxicons CSS ===== -->
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
 	rel='stylesheet'>
-
 <!--<title>Dashboard Sidebar Menu</title>-->
 </head>
 <body>
@@ -35,8 +34,6 @@
 		</header>
 		<div class="menu-bar">
 			<div class="menu">
-				<li class="search-box"><i class='bx bx-search icon'></i> 
-				<input type="text" placeholder="Buscar..."></li>
 				<li class="nav-link"><a href="inicio"> 
 				<i class='bx bx-home icon'></i>
 				<span class="text nav-text">Inicio</span>

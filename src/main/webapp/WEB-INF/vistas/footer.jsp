@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="/src/main/webapp/recursos/css/estilo.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <footer>
-    <div class="bottom-details">
-      <div class="bottom_text">
-		<span class="image"><img src="/control.asistencia/res/img/footer.png"alt="Compañia de Bomberos de Chile"></span>
-        <span class="copyright_text"> Hecho por Sabina Leal <br> Copyright © 2023 All rights reserved</span>
-        <span class="policy_terms">
-         <a href="https://github.com/kyulakyu/Control.Asistencia.git"><img src="/control.asistencia/res/img/github.png" alt="Github"> Github</a>
-        </span>
-      </div>
+
+    <div class="footer-container">
+      <footer class="p-1 mt-1 mt-sm-auto fixed-bottom">
+		<p style="text-align: center" class="mb-0"><img src="/control.asistencia/res/img/footer.png"alt="Compañia de Bomberos de Chile">
+		Hecho por Sabina Leal
+         <a href="https://github.com/kyulakyu/Control.Asistencia.git"><img src="/control.asistencia/res/img/github.png" alt="Github"></a><br>
+         Copyright © 2023 All rights reserved
+         </p>
+        </footer>
     </div>
-  </footer>
+
 </body>
 </html>

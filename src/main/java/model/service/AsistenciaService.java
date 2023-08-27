@@ -1,7 +1,7 @@
 package model.service;
 
 import java.util.List;
-
+import org.springframework.data.domain.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +22,20 @@ public class AsistenciaService {
         return asistenciaRepository.findAll();
     }
 
+    public List<Asistencia> getAsistenciasOrdenadas(String orderBy, boolean isAsc) {
+        Sort sort = null;
+
+        if (orderBy != null) {
+            sort = isAsc ? Sort.by(Sort.Order.asc(orderBy)) : Sort.by(Sort.Order.desc(orderBy));
+        }
+
+        if (sort != null) {
+            return asistenciaRepository.findAll(sort);
+        } else {
+            return asistenciaRepository.findAll();
+        }
+    }
+    
     public List<Asistencia> getUltimasTresAsistencias() {
         List<Asistencia> todasLasAsistencias = asistenciaRepository.findUltimasTresAsistencias();
         return limitarATres(todasLasAsistencias);

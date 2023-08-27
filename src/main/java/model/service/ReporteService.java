@@ -3,6 +3,7 @@ package model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import model.entity.Reporte;
@@ -20,6 +21,20 @@ public class ReporteService {
 
     public List<Reporte> getReportes() {
         return reporteRepository.findAll();
+    }
+
+    public List<Reporte> getReportesOrdenados(String orderBy, boolean isAsc) {
+        Sort sort = null;
+
+        if (orderBy != null) {
+            sort = isAsc ? Sort.by(Sort.Order.asc(orderBy)) : Sort.by(Sort.Order.desc(orderBy));
+        }
+
+        if (sort != null) {
+            return reporteRepository.findAll(sort);
+        } else {
+            return reporteRepository.findAll();
+        }
     }
 
     public List<Reporte> getUltimosTresReportes() {
