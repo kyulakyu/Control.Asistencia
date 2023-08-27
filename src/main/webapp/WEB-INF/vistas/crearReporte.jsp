@@ -23,8 +23,7 @@
 				<label for="detalle">Ingrese el detalle:</label><br> 
 				<input type="text" id="detalle" name="detalle" title="Campo Obligatorio / Max 70 Caracteres."><br>
 				<span id="detalleValidationMessage" style="color: red;"></span><br>
-				<br>
-				<div style="display: flex; justify-content: center;" class="mb-5">
+				<div style="display: flex; justify-content: center;">
 					<input type="submit" value="Enviar" class="boton-enviar">
 				</div>
 			</form>

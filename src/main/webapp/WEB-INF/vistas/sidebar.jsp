@@ -34,7 +34,7 @@
 		</header>
 		<div class="menu-bar">
 			<div class="menu">
-				<li class="nav-link"><a href="inicio"> 
+				<li class="nav-link"><a href="Inicio"> 
 				<i class='bx bx-home icon'></i>
 				<span class="text nav-text">Inicio</span>
 				</a></li>
