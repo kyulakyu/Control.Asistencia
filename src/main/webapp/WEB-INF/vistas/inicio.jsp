@@ -13,7 +13,7 @@
 </head>
 <body>
     <%@ include file='sidebar.jsp'%>
-    <div class="container">
+	<div class="container" style="text-align: center;">
         <h1>Boletines</h1>
         <table class="table">
             <thead class="thead-dark">
