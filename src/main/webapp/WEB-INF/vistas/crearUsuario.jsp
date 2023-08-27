@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/estilo.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crear Usuario</title>
 <body>
 	<%@ include file='sidebar.jsp'%>
@@ -45,7 +46,7 @@
 					<span id="rutValidationMessage" style="color: red;"></span><br> 
 					<label for="nombre">Nombre:</label><br> 
 					<input type="text" id="nombre" name="nombre" title="Campo Obligatorio"><br>
-					<span id="nombreValidationMessage" style="color: red;"></span><br> 
+					<span id="nombreValidationMessage" style="color: red;"></span>
 				</div>
 				<!--  Datos correspondientes al usuario de tipo Voluntario-->
 				<div id="camposVoluntario" style="display: none;">
@@ -63,7 +64,7 @@
 					<span id="cargoValidationMessage" style="color: red;"></span><br> 
 					<label for="fechaDeIngreso">Fecha de ingreso:</label><br>
 					<input type="text" id="fechaDeIngreso" name="fechaDeIngreso" title="/ En Formato DD/MM/AAAA"><br>
-					<span id="fechaDeIngresoValidationMessage" style="color: red;"></span><br>
+					<span id="fechaDeIngresoValidationMessage" style="color: red;"></span>
 				</div>
 				<!--  Datos correspondientes al usuario de tipo Administrativo-->
 				<div id="camposAdministrativo" style="display: none;">
@@ -78,10 +79,10 @@
 					<span id="apellidosValidationMessage" style="color: red;"></span><br> 
 					<label for=clienteAdministrativo>Cliente:</label><br> 
 					<input type="text" id="clienteAdministrativo" name="clienteAdministrativo" title="Campo Obligatorio"><br>
-					<span id="clienteAdministrativoValidationMessage" style="color: red;"></span><br> 
+					<span id="clienteAdministrativoValidationMessage" style="color: red;"></span>
 				</div>
-				<br>
-				<div style="display: flex; justify-content: center;" class="mb-5">
+				<br> 
+				<div style="display: flex; justify-content: center;">
 					<input type="submit" value="Enviar" class="boton-enviar">
 				</div>
 			</form>

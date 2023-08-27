@@ -14,11 +14,11 @@
 <script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/estilo.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
 	<%@ include file='sidebar.jsp'%>
-	<div class="container" style="text-align: center;">
+	<div class="container" style="text-align: center;" >
 		<h1 style="text-align: center; margin-bottom: 20px;">Usuarios:</h1>
 		<form id="tipoForm" action="ListarUsuario" method="get">
 			<label for="tipo">Selecciona un Tipo:</label> <select id="tipo"
@@ -28,7 +28,7 @@
 				<option value="Voluntario">Voluntario</option>
 				<option value="Administrativo">Administrativo</option>
 			</select>
-		</form>
+		</form><br>
 		<%
 		if (request.getAttribute("listarUsuario") != null) {
 			String tipoSeleccionado = request.getParameter("tipo");
@@ -39,12 +39,13 @@
 			.getAttribute("listarUsuario");
 			List<? extends Usuario> usuarios = usuariosMap.get(tipoSeleccionado);
 		%>
-		<table id="tablaUsuarios" class="table">
+		<table id="tablaUsuarios" class="table mx-auto">
 			<thead>
 				<tr>
 					<%
 					if (tipoSeleccionado.equals("Cliente")) {
 					%>
+					<th>ID</th>
 					<th>F. nacimiento</th>
 					<th>Rut</th>
 					<th>Nombre</th>
@@ -55,6 +56,7 @@
 					<%
 					} else if (tipoSeleccionado.equals("Voluntario")) {
 					%>
+					<th>ID</th>
 					<th>F. nacimiento</th>
 					<th>Run</th>
 					<th>Nombres</th>
@@ -68,6 +70,7 @@
 					<%
 					} else if (tipoSeleccionado.equals("Administrativo")) {
 					%>
+					<th>ID</th>
 					<th>F. nacimiento</th>
 					<th>Run</th>
 					<th>Nombres</th>
@@ -90,19 +93,25 @@
 					Cliente cliente = (Cliente) usuario;
 				%>
 				<tr>
+					<td><%=cliente.getId()%></td>
 					<td><%=cliente.getFechaNacimiento()%></td>
 					<td><%=cliente.getRut()%></td>
 					<td><%=cliente.getNombre()%></td>
 					<td><%=cliente.getTelefono()%></td>
 					<td><%=cliente.getDireccion()%></td>
 					<td><%=cliente.getComuna()%></td>
-					<td><a href="/control.asistencia/EditarCliente?id=<%=cliente.getId()%>">Editar</a></td>
+					<td><form action="/control.asistencia/EditarCliente" method="get">
+           				<input type="hidden" name="id" value="<%=cliente.getId()%>">
+           				<button type="submit" class="btn btn-secondary">Editar</button>
+        			</form></td>
+<%--         			<td><a href="/control.asistencia/EditarCliente?id=<%=cliente.getId()%>">Editar</a></td> --%>
 					</tr>
 				<%
 				} else if (tipoSeleccionado.equals("Voluntario") && usuario instanceof Voluntario) {
 				Voluntario voluntario = (Voluntario) usuario;
 				%>
 				<tr>
+					<td><%=voluntario.getId()%></td>
 					<td><%=voluntario.getFechaNacimiento()%></td>
 					<td><%=voluntario.getRunVoluntario()%></td>
 					<td><%=voluntario.getNombresV()%></td>
@@ -112,8 +121,11 @@
 					<td><%=voluntario.getComuna()%></td>
 					<td><%=voluntario.getFechaDeIngreso()%></td>
 					<td><%=voluntario.getCargo()%></td>
-
-					<td><a href="/control.asistencia/EditarVoluntario?id=<%=voluntario.getId()%>">Editar</a></td>
+					<td><form action="/control.asistencia/EditarVoluntario" method="get">
+           				<input type="hidden" name="id" value="<%=voluntario.getId()%>">
+           				<button type="submit" class="btn btn-secondary">Editar</button>
+        			</form></td>
+<%-- 					<td><a href="/control.asistencia/EditarVoluntario?id=<%=voluntario.getId()%>">Editar</a></td> --%>
 				</tr>
 				<%
 				} else if (tipoSeleccionado.equals("Administrativo")
@@ -121,6 +133,7 @@
 				Administrativo administrativo = (Administrativo) usuario;
 				%>
 				<tr>
+					<td><%=administrativo.getId()%></td>
 					<td><%=administrativo.getFechaNacimiento()%></td>
 					<td><%=administrativo.getRun()%></td>
 					<td><%=administrativo.getNombres()%></td>
@@ -129,9 +142,11 @@
 					<td><%=administrativo.getDireccion()%></td>
 					<td><%=administrativo.getComuna()%></td>
 					<td><%=administrativo.getClienteAdministrativo()%></td>
-					
-					
-					<td><a href="/control.asistencia/EditarAdministrativo?id=<%=administrativo.getId()%>">Editar</a></td>
+					<td><form action="/control.asistencia/EditarAdministrativo" method="get">
+           				<input type="hidden" name="id" value="<%=administrativo.getId()%>">
+           				<button type="submit" class="btn btn-secondary">Editar</button>
+        			</form></td>
+<%-- 					<td><a href="/control.asistencia/EditarAdministrativo?id=<%=administrativo.getId()%>">Editar</a></td> --%>
 					
 				</tr>
 				<%
@@ -141,7 +156,9 @@
 				}
 				}
 				%>
+				
 			</tbody>
+			
 		</table>
 
 	</div>

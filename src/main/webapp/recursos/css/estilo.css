@@ -58,6 +58,12 @@ body {
   width: 70px;
 }
 
+.sidebar.close ~ .container {
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+
 /* Sidebar list items */
 .sidebar li {
   height: 30px;
@@ -232,7 +238,7 @@ header .image-text .profession {
 
 /* Sidebar menu bar styles */
 .sidebar .menu-bar {
-  height: calc(100% - 80px);
+  height: calc(100% - 150px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -247,12 +253,16 @@ header .image-text .profession {
 /* Container styles */
 .container {
   position: relative;
-  max-width: 850px;
+  max-width: 1100px;
   width: 100%;
   background: #fff;
-  padding: 40px 30px;
+  padding: 40px 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   perspective: 2700px;
+  margin-left: 250px; /* Ancho del sidebar cuando está abierto */
+  margin-right: 250px; /* Ancho del sidebar cuando está abierto */
+  transition: margin-left 0.3s ease; /* Agrega una transición para suavizar el movimiento */
+  margin-bottom: 100px;
 }
 
 /* Container cover styles */
@@ -483,9 +493,11 @@ header .image-text .profession {
 footer {
   position: fixed;
   background: #15324a;
+  color: var(--text-color);
   width: 100%;
   bottom: 0;
   left: 0;
+    margin-top: 20px;
 }
 
 /* Footer before pseudo element styles */
@@ -511,6 +523,11 @@ footer .content .top {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 50px;
+}
+
+.footer-container {
+	margin-bottom: 80px;
+	/* Espacio para evitar que el footer tape el contenido */
 }
 
 /* Logo details styles */
@@ -739,9 +756,8 @@ footer .bottom-details .bottom_text {
 	min-height: 100vh;
 	padding: 20px;
 	text-align: justify;
-	background-color: transparent;
-	/* Fondo transparente */
-	margin-top: 80px;
+	background-color: transparent;	/* Fondo transparente */
+	margin-top: 20px;
 	margin-left: 115px;
 	margin-right: 115px;
 }
@@ -774,8 +790,44 @@ textarea {
 	/* Alto personalizado */
 }
 
+.small-btn {
+	padding: 0.1rem 0.4rem;
+ 	font-size: 0.6rem;
+}
 /* Responsive styles for screens below 900px */
 @media (max-width: 900px) {
+
+  /* Reduce el ancho del sidebar cuando está cerrado */
+  .sidebar.close {
+    width: 50px;
+  }
+
+  /* Ajusta el ancho del contenido del .container */
+  .sidebar.close ~ .container {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  /* Reduce el tamaño del texto del sidebar */
+  .sidebar .text {
+    font-size: 14px;
+  }
+
+  /* Ajusta el tamaño de los íconos en el sidebar */
+  .sidebar .icon {
+    font-size: 18px;
+  }
+
+  /* Ajusta el tamaño del texto en los formularios */
+  .form-content .title {
+    font-size: 20px;
+  }
+
+  /* Ajusta el tamaño del texto en los enlaces del footer */
+  footer .content .link-boxes .box li a {
+    font-size: 12px;
+  }	
+
   footer .content .link-boxes {
     flex-wrap: wrap;
   }
@@ -818,14 +870,36 @@ textarea {
     text-align: center;
   }
 }
-
 /* Responsive styles for screens below 460px */
 @media (max-width: 460px) {
-  footer .content .top .media-icons {
-    margin-top: 15px;
-  }
+	.sidebar {
+		width: 200px;
+		padding: 10px 0.1px;
+	}
 
-  footer .bottom-details .bottom_text {
-    padding: 5px;
-  }
+	.sidebar .text {
+		font-size: 12px;
+	}
+
+	/* Sidebar name styles */
+	header .image-text .name {
+		margin-top: 2px;
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	/* Sidebar profession styles */
+	header .image-text .profession {
+		font-size: 12px;
+		margin-top: -2px;
+		display: block;
+	}
+
+	footer .content .top .media-icons {
+		margin-top: 15px;
+	}
+
+	footer .bottom-details .bottom_text {
+		padding: 5px;
+	}
 }

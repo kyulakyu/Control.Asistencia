@@ -9,18 +9,40 @@
 <title>Listado de Asistencia</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/control.asistencia/res/css/estilo.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<%@ include file='sidebar.jsp'%>
-	<div class="container">
+	<div class="container" style="text-align: center;" >
 		<h1>Listado de Asistencia</h1>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th>ID</th>
-					<th>ID Voluntario</th>
-					<th>Fecha Asistencia</th>
-					<th>Detalle</th>
+                    <th>ID
+					    <a class="btn btn-outline-dark small-btn" href="?orderBy=idAsistencia&amp;orderDir=asc">
+					        <i class="fas fa-caret-up CSTitleIcon"></i>
+					    </a>
+					    <a class="btn btn-outline-dark small-btn" href="?orderBy=idAsistencia&amp;orderDir=desc">
+					        <i class="fas fa-caret-down CSTitleIcon"></i>
+					    </a>
+                    </th>
+                    <th>ID Voluntario
+					    <a class="btn btn-outline-dark small-btn" href="?orderBy=voluntarioI&amp;orderDir=asc">
+					        <i class="fas fa-caret-up CSTitleIcon"></i>
+					    </a>
+					    <a class="btn btn-outline-dark small-btn" href="?orderBy=voluntarioIa&amp;orderDir=desc">
+					        <i class="fas fa-caret-down CSTitleIcon"></i>
+					    </a>
+                    </th>
+                    <th>Fecha Asistencia
+					    <a class="btn btn-outline-dark small-btn" href="?orderBy=fechaAsistencia&amp;orderDir=asc">
+					        <i class="fas fa-caret-up CSTitleIcon"></i>
+					    </a>
+					    <a class="btn btn-outline-dark small-btn" href="?orderBy=fechaAsistencia&amp;orderDir=desc">
+					        <i class="fas fa-caret-down CSTitleIcon"></i>
+					    </a>
+                    </th>
+                    <th>Detalle</th>
 				</tr>
 			</thead>
 			<tbody>

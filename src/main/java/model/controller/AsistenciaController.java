@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -29,11 +30,18 @@ public class AsistenciaController {
     }
 
     @RequestMapping(path = "/ListarAsistencias", method = RequestMethod.GET)
-    public ModelAndView mostrarListarAsistencias() {
-        // Obtener la lista de asistencias desde el servicio AsistenciaService
-        List<Asistencia> asistencias = as.getAsistencias();
+    public ModelAndView mostrarListarAsistencias(
+            @RequestParam(name = "orderBy", required = false) String orderBy,
+            @RequestParam(name = "orderDir", defaultValue = "asc") String orderDir) {
+        
+        boolean isAsc = "asc".equalsIgnoreCase(orderDir);
+        
+        List<Asistencia> asistencias = as.getAsistenciasOrdenadas(orderBy, isAsc);
 
         ModelAndView modelAndView = new ModelAndView("listarAsistencias", "asistencias", asistencias);
+        modelAndView.addObject("orderBy", orderBy); // Pasar el orderBy actual a la vista
+        modelAndView.addObject("isAsc", isAsc);     // Pasar el flag de orden ascendente a la vista
+
         return modelAndView;
     }
 
