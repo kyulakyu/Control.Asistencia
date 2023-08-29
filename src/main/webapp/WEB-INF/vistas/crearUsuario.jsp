@@ -10,7 +10,7 @@
 <title>Crear Usuario</title>
 <body>
 	<%@ include file='sidebar.jsp'%>
-	<div class=contacto style="display: flex; justify-content: center;" data-mensaje="${mensaje}">
+	<div class=contacto style="display: flex; justify-content: center;">
 			<form action="/control.asistencia/CrearUsuario" method="post" onsubmit="return enviarFormulario(event)">
 				<h1 class=tituloContacto>Creacion de Usuario</h1>
 				<label for="tipo">Selecciona un Tipo:</label> <select id="tipo"

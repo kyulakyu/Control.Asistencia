@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,14 +35,14 @@
 		</header>
 		<div class="menu-bar">
 			<div class="menu">
-				<li class="nav-link"><a href="Inicio"> 
+<%-- 				Verificar si el usuario tiene el rol "administrativo"
+				<%
+          		if (request.isUserInRole("Administrativo")) {
+          		%> --%>
+          		<li class="nav-link"><a href="/control.asistencia/"> 
 				<i class='bx bx-home icon'></i>
 				<span class="text nav-text">Inicio</span>
-				</a></li>
-				<%-- Verificar si el usuario tiene el rol "administrativo" --%>
-				<%--           			<%
-          			if (request.isUserInRole("Administrativo")) {
-          			%> --%>
+				</a></li> 
 				<li class="nav-link"><a href="CrearUsuario"> 
 				<i class='bx bx-user-check icon'></i>
 				<span class="text nav-text">Crear Usuario</span>
@@ -50,15 +51,23 @@
 				<i class='bx bx-list-ul icon'></i>
 				<span class="text nav-text">Listado Usuarios</span>
 				</a></li>
-				<%--           			<%
-          			}
-          			%>
-          			Verificar si el usuario tiene el rol "administrativo"
-          			<%
-          			if (request.isUserInRole("Cliente")) {
-          			%> --%>
-          		<li class="nav-link"><a href="CrearBoletin"> 
+<%--  				<%
+          		}
+          		%>
+ 				Verificar si el usuario tiene el rol "cliente"
+          		<%
+          		if (request.isUserInRole("Cliente")) {
+          		%>
+          		<li class="nav-link"><a href="Inicio"> 
+				<i class='bx bx-home icon'></i>
+				<span class="text nav-text">Inicio</span>
+				</a></li>  --%>
+				<li class="nav-link"><a href="Boletin"> 
 				<i class='bx bx-news icon'></i>
+				<span class="text nav-text">Boletin</span>
+				</a></li>
+          		<li class="nav-link"><a href="CrearBoletin"> 
+				<i class='bx bxs-news icon'></i>
 				<span class="text nav-text">Crear Boletin</span>
 				</a></li>
 				<li class="nav-link"><a href="ListarAsistencias"> 
@@ -69,17 +78,21 @@
 				<i class='bx bx-list-ul icon'></i>
 				<span class="text nav-text">Listado Reportes</span>
 				</a></li>
-				<%--           			<%
-          			}
-          			%>
-          			Verificar si el usuario tiene el rol "usuario"
-          			<%
-          			if (request.isUserInRole("Voluntario")) {
-          			%>  --%>
-<!-- 			<li class="nav-link"><a href="Cuenta"> 
-				<i class='bx bx-user-circle icon'></i>
-				<span class="text nav-text">Cuenta</span>
-				</a></li> -->
+<%-- 				<%
+          		}
+          		%>
+				Verificar si el usuario tiene el rol "voluntario"
+          		<%
+          		if (request.isUserInRole("Voluntario")) {
+          		%> 
+          		<li class="nav-link"><a href="Inicio"> 
+				<i class='bx bx-home icon'></i>
+				<span class="text nav-text">Inicio</span>
+				</a></li> 
+				<li class="nav-link"><a href="Boletin"> 
+				<i class='bx bx-news icon'></i>
+				<span class="text nav-text">Boletin</span>
+				</a></li> --%>
 				<li class="nav-link"><a href="CrearAsistencia"> 
 				<i class='bx bx-calendar-check icon'></i>
 				<span class="text nav-text">Marcar Asistencia</span>
@@ -88,19 +101,37 @@
 				<i class='bx bx-error-alt icon'></i>
 				<span class="text nav-text">Reportar incidentes</span>
 				</a></li>
-				<%--                     <%
-          			}
-          			%> --%>
+<%-- 				<%
+          		}
+          		%> --%>
 				<li class="nav-link"><a href="Contacto"> 
 				<i class='bx bx-mail-send icon'></i>
 				<span class="text nav-text">Contacto</span>
 				</a></li>
 			</div>
 			<div class="bottom-content">
+<%-- 				Verificar si el usuario tiene distinto rol a administrativo, cliente o voluntario"
+			    <%
+          		if (!request.isUserInRole("Administrativo") && !request.isUserInRole("Cliente") && !request.isUserInRole("Voluntario")) {
+          		%> 
+				<li class="nav-link"><a href="/control.asistencia/"> 
+				<i class='bx bx-log-in icon'></i>
+				<span class="text nav-text">Iniciar Sesion</span>
+				</a></li>
+				<%
+          		}
+          		%>
+				Verificar si el usuario tiene los roles administrativo, cliente o voluntario"
+          		<%
+          		if (request.isUserInRole("Administrativo") || request.isUserInRole("Cliente") || request.isUserInRole("Voluntario")) {
+          		%> 
 				<li class=""><a	href="${pageContext.request.contextPath}/logout"> 
 				<i class='bx bx-log-out icon'></i> 
 				<span class="text nav-text">Cerrar Sesion</span>
 				</a></li>
+				<%
+          		}
+          		%> --%>
 			</div>
 		</div>
 	</nav>

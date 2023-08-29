@@ -10,15 +10,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<div class="container">
+	<div class="login">
 <%
 String error = (String) request.getAttribute("error");
 if (error != null && error.equals("true")) {
-    // Código JavaScript para mostrar la alerta de error
-	out.println("<script>Swal.fire('Error de Autenticación', 'Verifica tus credenciales', 'error');</script>");
+%>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error de Autenticación',
+            text: 'Verifica tus credenciales'
+        });
+    });
+</script>
+<%
 }
 %>
-		<input type="checkbox" id="flip">
 		<div class="cover">
 			<div class="front">
 				<img src="/control.asistencia/res/img/login.jpg" alt="">
@@ -28,7 +36,7 @@ if (error != null && error.equals("true")) {
 			<div class="form-content">
 				<div class="login-form">
 					<div class="title">Iniciar Sesion</div>
-					<form action="${pageContext.request.contextPath}/login" method="post">
+					<form action="/control.asistencia/Inicio" method="post">
 						<div class="input-boxes">
 							<div class="input-box">
 								<i class="fas fa-envelope"></i>
@@ -40,7 +48,7 @@ if (error != null && error.equals("true")) {
 							</div>
 							<!-- <div class="text"><a href="#">Olvidé la contraseña</a></div> -->
 							<div class="button input-box">
-								<input type="submit" value="Submit">
+								<input type="submit" value="Enviar" class="boton-enviar">
 							</div>
 							<div class="text sign-up-text">
 								Problemas para ingresar? Diríjase a <a href="Contacto">Contacto</a>
@@ -51,5 +59,6 @@ if (error != null && error.equals("true")) {
 			</div>
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

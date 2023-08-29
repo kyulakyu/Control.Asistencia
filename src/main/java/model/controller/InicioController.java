@@ -13,7 +13,7 @@ public class InicioController {
      * 
      * @return un objeto {@link ModelAndView} con la respuesta al cliente
      */
-    @RequestMapping(path = "/inicio", method = RequestMethod.GET)
+    @RequestMapping(path = "/", method = RequestMethod.GET)
     public ModelAndView mostrarInicio() {
         return new ModelAndView("inicio");
     }

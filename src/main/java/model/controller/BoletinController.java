@@ -28,11 +28,11 @@ public class BoletinController {
         return new ModelAndView("crearBoletin");
     }
 
-    @RequestMapping(path = "/Inicio", method = RequestMethod.GET)
+    @RequestMapping(path = "/Boletin", method = RequestMethod.GET)
     public ModelAndView mostrarListarBoletines() {
         List<Boletin> boletines = bs.getBoletines();
 
-        ModelAndView modelAndView = new ModelAndView("inicio", "boletines", boletines);
+        ModelAndView modelAndView = new ModelAndView("boletin", "boletines", boletines);
         return modelAndView;
     }
 

@@ -14,8 +14,8 @@
 	<%@ include file='sidebar.jsp'%>
 	<div class=contacto style="display: flex; justify-content: center;">
 		<form action="/control.asistencia/GuardarEdicionAdministrativo" method="post">
-			<h1 class=tituloContacto>Formulario de edición de administrativo</h1>
-			<br> <br>
+			<h1 class=tituloContacto>Editar administrativo</h1>
+			<br>
 			<!--Datos en comun para todos los tipos de Usuario-->
 			<label for="correo">Ingrese correo:</label><br> 
 			<input type="text" id="correo" name="correo" value="${administrativo.correo}" title="Campo Obligatorio"><br>

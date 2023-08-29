@@ -14,7 +14,7 @@
 	<%@ include file='sidebar.jsp'%>
 	<div class=contacto style="display: flex; justify-content: center;">
 		<form action="/control.asistencia/GuardarEdicionVoluntario" method="post">
-			<h1 class=tituloContacto>Formulario de edición de Voluntario</h1>
+			<h1 class=tituloContacto>Editar Voluntario</h1>
 			<br>
 			<!--Datos en comun para todos los tipos de Usuario-->
 			<label for="correo">Ingrese correo:</label><br> 
