@@ -10,36 +10,36 @@
 
 	<!-- Configuración de seguridad -->
  	<http auto-config="true">
-<!-- 		<intercept-url pattern="/CrearUsuario" access="hasAnyAuthority('Administrativo')" />
+<!--  	   	<intercept-url pattern="/Inicio" access="hasAnyAuthority('Cliente', 'Voluntario', 'Administrativo')" />
+ 		<intercept-url pattern="/CrearUsuario" access="hasAnyAuthority('Administrativo')" />
 		<intercept-url pattern="/ListarUsuario" access="hasAnyAuthority('Administrativo')" />
 		<intercept-url pattern="/ListarReportes" access="hasAnyAuthority('Administrativo')" />
 		<intercept-url pattern="/ListarAsistencia" access="hasAnyAuthority('Cliente')" />
 		<intercept-url pattern="/CrearBoletin" access="hasAnyAuthority('Cliente')" />
 		<intercept-url pattern="/ListarBoletin" access="hasAnyAuthority('Cliente')" />
-		<intercept-url pattern="/Cuenta" access="hasAnyAuthority('Cliente', 'Voluntario')" />
 		<intercept-url pattern="/MarcarAsistencia" access="hasAnyAuthority('Voluntario')" />
-		<intercept-url pattern="/ReportarIncidente"	access="hasAnyAuthority('Voluntario')" /> -->
-		<intercept-url pattern="/Contacto" access="permitAll" /> <!-- Permitir acceso a todos -->
-		<intercept-url pattern="/Logout" access="permitAll" /> <!-- Permitir acceso a todos -->
-		<intercept-url pattern="/Inicio" access="permitAll" /> <!-- Permitir acceso a todos -->
-		<form-login login-page="/"
-			authentication-failure-url="/error" username-parameter="correo_usuario"
-			password-parameter="password_usuario" />
+		<intercept-url pattern="/ReportarIncidente"	access="hasAnyAuthority('Voluntario')" />
+		<intercept-url pattern="/Contacto" access="permitAll" /> Permitir acceso a todos
+		<intercept-url pattern="/Logout" access="permitAll" /> Permitir acceso a todos -->
+		<form-login login-page="/" default-target-url="/Inicio"
+					authentication-failure-url="/error" 
+					username-parameter="correo_usuario"
+					password-parameter="password_usuario" />
 		<csrf disabled="true" />
-		<logout logout-success-url="/Inicio" />
+		<logout logout-success-url="/" />
 	</http>
-<!--  Contraseñas base
-cliente@example.com= c123456
-admin@example.com= c123456789
-voluntario@example.com= c1234
+<!--  Contraseñas codificadas
+cliente@mail.com= C123456#
+admin@mail.com= C123456789#
+voluntario@mail.com= C654321#
    -->
 	<!-- Configuración de autenticación -->
 	<authentication-manager>
 		<authentication-provider>
 			<password-encoder hash="bcrypt" />
 			<jdbc-user-service data-source-ref="ds"
-				users-by-username-query="select correo_usuario as username, password_usuario as password, 1 as enable from login where correo_usuario = ?"
-				authorities-by-username-query="select correo_usuario as username, tipo_usuario as authority from login where correo_usuario = ?" />
+				users-by-username-query="SELECT correo_usuario AS username, password_usuario AS password, 1 AS enabled FROM login WHERE correo_usuario = ?"
+				authorities-by-username-query="SELECT correo_usuario AS username, tipo_usuario AS authority FROM login WHERE correo_usuario = ?" />
 		</authentication-provider>
 
 	</authentication-manager>

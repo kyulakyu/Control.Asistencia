@@ -14,25 +14,10 @@
 <body>
     <%@ include file='sidebar.jsp'%>
 	<div class="container" style="text-align: center;">
-        <h1>Boletines</h1>
+        <h1>Biemvenidos</h1>
         <table class="table">
             <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Titulo</th>
-                    <th>Fecha Boletin</th>
-                    <th>Detalle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="boletin" items="${boletines}">
-                    <tr>
-                        <td>${boletin.idBoletin}</td>
-                        <td>${boletin.titulo}</td>
-                        <td>${boletin.fechaBoletin}</td>
-                        <td>${boletin.detalle}</td>
-                    </tr>
-                </c:forEach>
+                <tr>Hola, esta es la aplicacion para registrar tu asistencia, reportes o mirar los boletines para ti.</tr>
             </tbody>
         </table>
     </div>

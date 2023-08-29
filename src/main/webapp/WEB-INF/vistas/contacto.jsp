@@ -13,7 +13,7 @@
 	<%@ include file='sidebar.jsp'%>
 	<div class=contacto style="display: flex; justify-content: center;" data-mensaje="${mensaje}">
 		<form action="/control.asistencia/CrearContacto" method="post" class="mb-5" class="mt-5">
-			<h1 class=tituloContacto>Formulario de Contacto</h1>
+			<h1 class=tituloContacto>Contacto</h1>
 			<label for="nombre">Nombre:</label><br> 
 			<input type="text" id="nombre" name="nombre" title="Campo Obligatorio"><br>
 			<span id="nombreValidationMessage" style="color: red;"></span><br> 

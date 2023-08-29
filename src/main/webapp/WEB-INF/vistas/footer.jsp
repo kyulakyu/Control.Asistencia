@@ -15,9 +15,9 @@
 
     <div class="footer-container">
       <footer class="p-1 mt-1 mt-sm-auto fixed-bottom">
-		<p style="text-align: center" class="mb-0"><img src="/control.asistencia/res/img/footer.png"alt="Compañia de Bomberos de Chile">
+		<p style="text-align: center" class="mb-0"><img class="footer-img" src="/control.asistencia/res/img/footer.png"alt="Compañia de Bomberos de Chile">
 		Hecho por Sabina Leal
-         <a href="https://github.com/kyulakyu/Control.Asistencia.git"><img src="/control.asistencia/res/img/github.png" alt="Github"></a><br>
+         <a href="https://github.com/kyulakyu/Control.Asistencia.git"><img class="footer-img" src="/control.asistencia/res/img/github.png" alt="Github"></a><br>
          Copyright © 2023 All rights reserved
          </p>
         </footer>

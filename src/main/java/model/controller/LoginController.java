@@ -3,72 +3,51 @@ package model.controller;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 
 @Controller
 public class LoginController {
 
-    /**
-     * Maneja las solicitudes que se le hacen a la raíz del sitio
-     * 
-     * @return un objeto {@link ModelAndView} con la respuesta al cliente
-     */
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @GetMapping("/Login")
     public ModelAndView mostrarLogin() {
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value = "/error")
+    @GetMapping("/error")
     public ModelAndView errorLogin() {
         return new ModelAndView("login", "error", "true");
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    @GetMapping("/logout")
     public ModelAndView logout() {
-        // Realiza el proceso de cierre de sesión si es necesario, por ejemplo, eliminar la autenticación actual
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            SecurityContextHolder.clearContext(); // Esto limpiará la autenticación actual
-        }
-       return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/");
     }
-
-    // Método para obtener el nombre de usuario y sus roles
-    private String getUsername() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            return auth.getName();
-        }
-        return null;
-    }
-
-    // Método para verificar si el usuario tiene el rol "cliente"
+//
+//    @PostMapping("/Inicio")
+//    public ModelAndView inicio() {
+//        if (isCliente() || isVoluntario() || isAdministrativo()) {
+//            return new ModelAndView("Inicio");
+//        } else {
+//            return new ModelAndView("redirect:/");
+//        }
+//    }
+//    
     private boolean isCliente() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Cliente"));
-        }
-        return false;
+        return hasAuthority("Cliente");
     }
 
-    // Método para verificar si el usuario tiene el rol "voluntario"
     private boolean isVoluntario() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Voluntario"));
-        }
-        return false;
+        return hasAuthority("Voluntario");
     }
-    
-    // Método para verificar si el usuario tiene el rol "administrativo"
+
     private boolean isAdministrativo() {
+        return hasAuthority("Administrativo");
+    }
+
+    private boolean hasAuthority(String authority) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            return auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("Administrativo"));
-        }
-        return false;
+        return auth != null && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals(authority));
     }
 }
